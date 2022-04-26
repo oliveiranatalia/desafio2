@@ -1,27 +1,27 @@
-package br.aula15
 import java.lang.NumberFormatException
 import kotlin.system.exitProcess
 
-//Programa que leia 4 notas e retorne a média de cada aluno.
+//Programa que leia 4 notas e retorne a média de cada aluno usando métodos.
 
 fun main () {
     println("\n---------------------------------\n         média global\n---------------------------------")
     nome()
 }
 fun retorno(){
-    print("\n-- 1 Começar novamente   2 Sair: ")
-    var escolha = readln().toInt()
-    when (escolha) {
-        1 -> {
+    try {
+        print("\n-- 1 Começar novamente   2 Sair: ")
+        val escolha = readln().toInt()
+        if (escolha == 1) {
             nome()
-        }
-        2 -> {
+        } else if (escolha == 2){
             exitProcess(0)
-        }
-        else -> {
-            println("--- valor não reconhecido ---")
+        } else {
+            print("-- valor inválido\n")
             retorno()
         }
+    } catch(ex: NumberFormatException){
+        print("-- Insira apenas números\n")
+        retorno()
     }
 }
 fun nome (){
